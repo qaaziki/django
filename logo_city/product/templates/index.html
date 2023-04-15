@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{%block content%}
+
+   <div class="row row-cols-2 row-cols-md-3 mx-auto">
+    {% for product in products %}
+      <div class="col d-flex justify-content-evenly"style="padding: 10px;">
+        <div class="card d-flex justify-content-evenly" style="width: 400px;">
+          <img src="{{product.image.url}}" class="card-img-top" alt="...">
+          <div class="card-body ">
+            <h5 class="card-title">{{product.product}}</h5>
+            <p class="card-text">{{product.description}}</p>
+          </div>
+          <form action="{%url 'delete_product' product.id%}" method="post">
+            {%csrf_token%}
+            <button type="submit">delet</button>
+          </form>
+          <a href="{%url 'update_product' product.id %}">Редактирование</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+    {%if request.user.is_superuser%}
+
+      <a href="{%url 'create_product'%}">Создание продукта</a>
+    {%endif%}
+
+  <h1>dssddssdss</h1>
+
+{%endblock%}

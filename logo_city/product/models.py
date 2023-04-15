@@ -4,7 +4,7 @@ from django.db import models
 class Product(models.Model):
     product = models.CharField(
         verbose_name="Название товара",
-        max_length=100
+        max_length=255
     )
     is_active = models.BooleanField(
         verbose_name="Показывать товар",
@@ -31,5 +31,27 @@ class Product(models.Model):
         decimal_places=2,
     )
 
+    category = models.ForeignKey(
+        "Category", verbose_name="Категория",
+        on_delete=models.CASCADE
+    )
+
+    image = models.ImageField(
+        upload_to="products_image",
+        null=True,
+        blank=True,
+    )
+
     def __str__(self):
         return self.product
+
+
+class Category(models.Model):
+    title = models.CharField(
+        verbose_name="Название категории",
+        max_length=255,
+
+    )
+
+    def __str__(self):
+        return self.title

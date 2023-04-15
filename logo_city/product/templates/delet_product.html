@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{%block content%}
+
+  <h2 class="">{{product_item.product}}</h2>
+  <p>{{product_item.description}}</p>
+  <img src="{{product_item.image.url}}" class="card-img-top" alt="..." style="height: 300px; width: 350px;">
+  <p>{{product_item.price}}</p>
+  <p>{{product_item.sale}}</p>
+
+{%endblock%}

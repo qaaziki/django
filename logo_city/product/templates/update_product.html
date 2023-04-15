@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{%block content%}
+
+  <form action="{%url 'update_product' prod_item.id %}"  method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+    {{form.as_p}}
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+{%endblock%}
